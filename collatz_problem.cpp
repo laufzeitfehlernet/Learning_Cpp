@@ -1,21 +1,50 @@
 #include <iostream>
   using namespace std;
 
+#include <string.h>
+
   int long zahl;
   int zaehler;
   int maximum;
 
 
+  string clnstr(string phrase)
+{
+	int laenge = strlen(phrase.c_str())-1;
+	for (int i = 0; i <= laenge; ++i)
+	{
+		switch(phrase[i])
+	{
+		case 'ä' : phrase[i] = 0x84;
+			break;
+		case 'ö' : phrase[i] = 0x94;
+			break;
+		case 'ü' : phrase[i] = 0x81;
+			break;
+		case 'Ä' : phrase[i] = 0x8E;
+			break;
+		case 'Ö' : phrase[i] = 0x99;
+			break;
+		case 'Ü' : phrase[i] = 0x9A;
+			break;
+		case 'ß' : phrase[i] = 0xE1;
+			break;
+		default : break;
+	}
+	}
+	return (phrase);
+};
+
 int main() {
 
-cout << "Geben Sie eine ganze Zahl ein: ";
+cout << clnstr("Geben Sie eine ganze Zahl ein: ");
 cin >> zahl;
 cout << endl;
 
 system("cls");
 
 cout << "========================================" << endl;
-cout << "Collatz-Zahlenfolge für die Zahl " << zahl << endl;
+cout << clnstr("Collatz-Zahlenfolge für die Zahl ") << zahl << endl;
 cout << "========================================" << endl;
 cout << endl;
 
@@ -38,6 +67,11 @@ while (zahl != 1) {
                        }
 
     cout << endl;
-    cout << "Es benötigte " << zaehler << " Durchläufe und das Maximum war ";
+    cout << clnstr("Es benötigte ") << zaehler << clnstr(" Durchläufe und das Maximum war ");
     cout << maximum << endl;
+
+
 }
+
+
+
