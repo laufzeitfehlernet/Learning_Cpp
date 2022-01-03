@@ -5,16 +5,31 @@
 #include <chrono>
 
 
- // Funktionen müssen vorher schon deklariert werden
- double fakultaet_rek(int a);
- double fakultaet_for(int a);
+
+ double fakultaet_rek(int a) {
+
+   if (a == 1)
+     return 1;
+    else return a*fakultaet_rek(a-1);
+
+ }
+
+double fakultaet_for(int a) {
+
+double ergebnis = 1;
+for(int i=1; i<= a;i++)
+	{
+		ergebnis *= i;
+	}
+return ergebnis;
+
+}
 
  int main()  {
 
  int zahl;
  double ergebnis1;
  double ergebnis2;
- //double time1=0.0, time2=0.0, tstart1, tstart2, tend1, tend2;
 
  cout << "Bitte geben Sie eine ganze Zahl ein!  ";
  cin >> zahl;
@@ -46,23 +61,3 @@
 
  }
 
- // Die Definition einer Funktion kann später erfolgen
- // - nach dem Hauptprogramm
-double fakultaet_rek(int a) {
-
-   if (a == 1)
-     return 1;
-    else return a*fakultaet_rek(a-1);
-
- }
-
-double fakultaet_for(int a) {
-
-double ergebnis = 1;
-for(int i=1; i<= a;i++)
-	{
-		ergebnis *= i;
-	}
-return ergebnis;
-
-}
